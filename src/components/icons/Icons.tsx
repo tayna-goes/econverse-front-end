@@ -91,7 +91,6 @@ export const CloseIcon = createIcon('0 0 24 24', <path d="M5 5l14 14M19 5L5 19" 
 export const MinusIcon = createIcon('0 0 24 24', <path d="M5 12h14" />, 1.600);
 export const PlusIcon = createIcon('0 0 24 24', <path d="M5 12h14M12 5v14" />, 1.800);
 
-/* ---------- Redes sociais ---------- */
 export const InstagramIcon = createIcon(
   '0 0 24 24',
   <>

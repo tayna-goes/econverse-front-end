@@ -12,7 +12,6 @@ export function BrandList() {
 
             <div className={styles.trackWrapper}>
                 <ul className={styles.track}>
-                    {/* itens originais */}
                     {BRANDS.map((id) => (
                         <li key={id}>
                             <a href="#produtos" className={styles.brand} aria-label={`Marca Econverse ${id}`}>
@@ -20,7 +19,6 @@ export function BrandList() {
                             </a>
                         </li>
                     ))}
-                    {/* clones para loop infinito — ocultos de leitores de tela */}
                     {BRANDS.map((id) => (
                         <li key={`clone-${id}`} aria-hidden="true">
                             <a href="#produtos" className={styles.brand} tabIndex={-1}>
