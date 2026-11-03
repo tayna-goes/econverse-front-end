@@ -1,0 +1,26 @@
+# Econverse
+> Econverse é uma loja virtual de tecnologia e eletrônicos com frete grátis acima de R$ 200 e parcelamento sem juros.
+
+## Sobre
+Vendemos smartphones, acessórios, tablets, notebooks e TVs com compra 100% segura.
+
+## Categorias
+- Tecnologia
+- Supermercado
+- Bebidas
+- Ferramentas
+- Saúde
+- Esportes e Fitness
+- Moda
+
+## Contato
+- Site: https://econverse.com.br
+- Instagram: https://instagram.com/econverse
+- Facebook: https://facebook.com/econverse
+- LinkedIn: https://linkedin.com/company/econverse
+
+## Políticas
+- Termos e Condições: https://econverse.com.br/termos/
+- Política de Privacidade: https://econverse.com.br/privacidade/
+- Troca e Devolução: https://econverse.com.br/trocas/
+- Política de Cookies: https://econverse.com.br/cookies/
