@@ -1,0 +1,76 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+.hero {
+    position: relative;
+    height: 24.3125rem;
+    color: $color-white;
+    background-color: #0b0b0d;
+    background-image: linear-gradient(90deg, #0b0b0d 0%, #0b0b0d 38%, rgba(11, 11, 13, 0) 52%),
+        url('../../assets/hero-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: left top, right top;
+    background-size: 100% 100%, auto 100%;
+}
+
+.inner {
+    @include container;
+    height: 100%;
+    padding-top: 4.375rem;
+}
+
+.title {
+    max-width: 37.5rem;
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 3.125rem;
+    letter-spacing: -0.0125rem;
+}
+
+.subtitle {
+    margin-top: 1.125rem;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    font-weight: 400;
+
+    strong {
+        font-weight: 600;
+        color: $color-yellow;
+    }
+}
+
+.cta {
+    @include btn($color-yellow, $color-navy, #ffd62e);
+    @include focus-ring($color-white);
+    width: 12.875rem;
+    height: 3.125rem;
+    margin: 2.9375rem 0 0 0.4375rem;
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-transform: none;
+}
+
+@media (max-width: $bp-mobile) {
+    .hero {
+        height: auto;
+        min-height: 20rem;
+        background-size: 100% 100%, cover;
+    }
+
+    .inner {
+        padding-block: 3rem;
+    }
+
+    .title {
+        font-size: 2.125rem;
+        line-height: 2.375rem;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+    }
+
+    .cta {
+        margin-left: 0;
+    }
+}

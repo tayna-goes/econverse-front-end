@@ -1,0 +1,122 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+$card-size: 13.1875rem;
+$card-gap:  2.625rem;
+$cards:     5;
+$scroll-distance: calc(#{$cards} * (#{$card-size} + #{$card-gap}));
+
+.section {
+    overflow: hidden;
+}
+
+.title {
+    @include container;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 2.25rem;
+    text-align: center;
+    color: $color-blue;
+}
+
+.trackWrapper {
+    overflow: hidden;
+    padding-block: 0.5rem 1.5rem;
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0,
+        #000 8%,
+        #000 92%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0,
+        #000 8%,
+        #000 92%,
+        transparent 100%
+    );
+    margin-top: 1.8125rem;
+
+    &:hover .track {
+        animation-play-state: paused;
+    }
+}
+
+.track {
+    display: flex;
+    gap: $card-gap;
+    width: max-content;
+    animation: marquee 22s linear infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+
+        li:nth-child(n + #{$cards + 1}) {
+            display: none;
+        }
+    }
+}
+
+.brand {
+    @include focus-ring;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: $card-size;
+    height: $card-size;
+    background: $color-white;
+    border-radius: 50%;
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.13);
+    transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+
+    img {
+        transition: opacity 0.3s ease;
+    }
+}
+
+.trackWrapper:hover .brand {
+    opacity: 0.3;
+    filter: grayscale(60%);
+    transform: scale(0.92);
+    box-shadow: none;
+}
+
+.trackWrapper:hover li:hover .brand {
+    opacity: 1;
+    filter: none;
+    transform: scale(1.1) translateY(-0.3rem);
+    box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.18);
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(-1 * #{$scroll-distance})); }
+}
+
+@media (max-width: $bp-tablet) {
+    .brand {
+        width: 10.625rem;
+        height: 10.625rem;
+
+        img {
+            width: 5.625rem;
+            height: auto;
+        }
+    }
+}
+
+@media (max-width: $bp-mobile) {
+    .brand {
+        width: 8.125rem;
+        height: 8.125rem;
+
+        img {
+            width: 4.375rem;
+            height: auto;
+        }
+    }
+}

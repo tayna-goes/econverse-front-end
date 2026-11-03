@@ -1,0 +1,149 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+    background: $color-white;
+}
+
+.inner {
+    background: $color-surface;
+    padding-block: 2.625rem 2.6875rem;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: none;
+
+    @media (max-width: $bp-tablet) {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding-inline: 1.5rem;
+    }
+}
+
+.brand {
+    justify-self: end;
+    width: 100%;
+    max-width: calc(#{$container} / 2 + #{$gutter} - 0px);
+    padding: 0 2.5rem 0 max(#{$gutter}, calc((100vw - #{$container}) / 2));
+    border-right: 0.125rem solid #ccc;
+
+    img {
+        width: 10.25rem;
+        height: 3.0625rem;
+    }
+
+    p {
+        max-width: 18.125rem;
+        margin-top: 1rem;
+        font-size: 0.875rem;
+        line-height: 1.3125rem;
+        letter-spacing: 0.0125rem;
+        color: $color-text-soft;
+    }
+
+    @media (max-width: $bp-tablet) {
+        max-width: none;
+        padding: 0;
+        border-right: 0;
+    }
+}
+
+.social {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.75rem;
+
+    a {
+        @include focus-ring;
+        display: flex;
+        color: $color-text;
+        transition: color 0.2s, transform 0.2s;
+
+        &:hover {
+            color: $color-purple;
+            transform: translateY(-0.125rem);
+        }
+    }
+}
+
+.links {
+    display: flex;
+    gap: 7.3125rem;
+    padding: 0 2.5rem 0 5.5625rem;
+
+    h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.5rem;
+        color: $color-text-soft;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.625rem;
+        margin-top: 0.75rem;
+    }
+
+    a {
+        @include focus-ring;
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+        letter-spacing: 0.01875rem;
+        color: $color-text-soft;
+
+        &:hover {
+            color: $color-purple;
+        }
+    }
+
+    @media (max-width: $bp-tablet) {
+        flex-wrap: wrap;
+        gap: 2rem;
+        padding: 0;
+    }
+}
+
+.companyInfo {
+    display: block;
+    padding: 0.625rem 1.5rem;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    text-align: center;
+    color: $color-muted;
+    font-style: normal;
+    background: $color-white;
+
+    a {
+        @include focus-ring;
+        color: $color-muted;
+
+        &:hover {
+            color: $color-purple;
+        }
+    }
+}
+
+.copy {
+    padding: 0.25rem 1.5rem 0.9375rem;
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+    text-align: center;
+    color: $color-text-soft;
+}
+
+.devCredit {
+    @include button-reset;
+    @include focus-ring;
+    font-size: inherit;
+    color: $color-muted;
+    border-bottom: 0.0625rem dashed $color-border;
+    padding-bottom: 0.0625rem;
+    transition: color 0.2s, border-color 0.2s;
+    cursor: pointer;
+
+    &:hover {
+        color: $color-purple;
+        border-color: $color-purple;
+    }
+}

@@ -1,0 +1,214 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+    @include container;
+    padding-top: 0;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    @include section-title;
+    width: 100%;
+    max-width: 71.25rem;
+
+    &::before,
+    &::after {
+        content: '';
+        flex: 1;
+        height: 0.0625rem;
+        background: $color-line;
+    }
+
+    @media (max-width: $bp-mobile) {
+        font-size: 1.5rem;
+
+        &::before,
+        &::after {
+            display: none;
+        }
+    }
+}
+
+.seeAll {
+    @include focus-ring;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    color: $color-text;
+
+    &:hover {
+        color: $color-blue;
+    }
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.875rem;
+    flex-wrap: wrap;
+}
+
+.tabs {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    height: 2.5rem;
+    border: 0.0625rem solid $color-border;
+    flex: 1;
+    min-width: 0;
+
+    @media (max-width: $bp-mobile) {
+        display: flex;
+        overflow-x: auto;
+    }
+}
+
+.sortWrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.sortLabel {
+    font-size: 0.8125rem;
+    color: $color-muted;
+    white-space: nowrap;
+}
+
+.sortSelect {
+    height: 2.5rem;
+    padding: 0 0.75rem;
+    font-family: inherit;
+    font-size: 0.8125rem;
+    color: $color-text;
+    background: $color-white;
+    border: 0.0625rem solid $color-border;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: border-color 0.2s;
+
+    &:focus-visible {
+        outline: 0.125rem solid $color-purple;
+        outline-offset: 0.0625rem;
+    }
+
+    &:hover {
+        border-color: $color-blue;
+    }
+}
+
+.tab {
+    @include button-reset;
+    @include focus-ring;
+    padding-inline: 0.75rem;
+    font-size: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: $color-text;
+    border-left: 0.0625rem solid $color-border;
+    transition: color 0.2s, background 0.2s;
+
+    &:first-child {
+        border-left: 0;
+    }
+
+    &[aria-selected='true'] {
+        font-weight: 600;
+        color: $color-blue;
+        background: rgba($color-blue, 0.06);
+    }
+
+    &:hover {
+        color: $color-blue;
+        background: rgba($color-blue, 0.04);
+    }
+}
+
+.feedback {
+    padding: 5rem 0;
+    text-align: center;
+    color: $color-text-soft;
+}
+
+.retry {
+    @include btn($color-blue, $color-white, #2a369a);
+    height: 2.5rem;
+    margin-top: 1rem;
+    padding-inline: 1.5rem;
+    font-size: 0.875rem;
+}
+
+.carousel {
+    position: relative;
+}
+
+.track {
+    display: flex;
+    gap: 1.125rem;
+    padding: 1.4375rem 0.3125rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0.3125rem;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.slide {
+    display: flex;
+    flex: 0 0 auto;
+}
+
+.arrow {
+    @include button-reset;
+    @include focus-ring;
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    margin-top: -1rem;
+    background: $color-white;
+    border-radius: 50%;
+    box-shadow: $shadow-soft;
+    color: $color-text;
+    transition: opacity 0.2s;
+
+    &:disabled {
+        opacity: 0.4;
+        cursor: default;
+    }
+}
+
+.prev {
+    left: -2.625rem;
+}
+
+.next {
+    right: -2.625rem;
+}
+
+@media (max-width: 85rem) {
+    .prev {
+        left: 0.25rem;
+    }
+
+    .next {
+        right: 0.25rem;
+    }
+}

@@ -1,0 +1,404 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+    background: $color-white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 0.0625rem 0 $color-line;
+}
+
+.inner {
+    @include container;
+}
+
+.benefits {
+    display: flex;
+    justify-content: center;
+    gap: 7.4375rem;
+    height: 2rem;
+    align-items: center;
+    border-bottom: 0.0625rem solid $color-line;
+    font-size: 0.8125rem;
+    color: $color-muted;
+
+    li {
+        display: flex;
+        align-items: center;
+        gap: 0.5625rem;
+    }
+
+    svg {
+        color: $color-muted;
+    }
+
+    strong {
+        font-weight: 600;
+        color: $color-purple;
+    }
+
+    @media (max-width: $bp-tablet) {
+        gap: 1.5rem;
+        font-size: 0.75rem;
+        overflow: hidden;
+    }
+
+    @media (max-width: $bp-mobile) {
+        display: none;
+    }
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 1fr 39.375rem 1fr;
+    align-items: center;
+    height: 4.4375rem;
+
+    @media (max-width: $bp-tablet) {
+        grid-template-columns: auto 1fr auto;
+        gap: 1rem;
+    }
+
+    @media (max-width: $bp-mobile) {
+        grid-template-columns: 1fr auto;
+        height: auto;
+        padding-block: 0.75rem;
+
+        .search {
+            grid-column: 1 / -1;
+            grid-row: 2;
+        }
+    }
+}
+
+.logo {
+    justify-self: start;
+    line-height: 0;
+    transition: opacity 0.2s;
+
+    &:hover {
+        opacity: 0.85;
+    }
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    padding: 0 1rem;
+    background: #f6f5f2;
+    border-radius: 0.5rem;
+    transition: box-shadow 0.2s;
+
+    input {
+        flex: 1;
+        min-width: 0;
+        height: 100%;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        font-size: 1rem;
+        color: $color-text;
+
+        &::placeholder {
+            color: $color-muted;
+        }
+    }
+
+    button {
+        @include button-reset;
+        @include focus-ring;
+        display: flex;
+        color: $color-muted;
+        transition: color 0.2s;
+
+        &:hover {
+            color: $color-purple;
+        }
+    }
+
+    &:focus-within {
+        box-shadow: 0 0 0 0.125rem rgba($color-purple, 0.35);
+    }
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.9375rem;
+    margin-right: 0.1875rem;
+
+    button {
+        @include button-reset;
+        @include focus-ring;
+        display: flex;
+        color: $color-muted;
+        transition: color 0.2s, transform 0.15s;
+
+        &:hover {
+            color: $color-purple;
+            transform: translateY(-0.0625rem);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: $bp-tablet) {
+        gap: 1rem;
+    }
+}
+
+.cartBtn {
+    position: relative;
+}
+
+.cartBadge {
+    position: absolute;
+    top: -0.4375rem;
+    right: -0.5625rem;
+    min-width: 1.125rem;
+    height: 1.125rem;
+    padding: 0 0.25rem;
+    background: $color-purple;
+    color: $color-white;
+    font-size: 0.625rem;
+    font-weight: 700;
+    border-radius: 0.5625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    animation: pop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes pop {
+    from { transform: scale(0.4); }
+    to   { transform: scale(1);   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cartBadge {
+        animation: none;
+    }
+}
+
+.clearSearch {
+    @include button-reset;
+    @include focus-ring;
+    display: flex;
+    color: $color-muted;
+    border-radius: 0.25rem;
+    transition: color 0.2s;
+    margin-right: 0.25rem;
+
+    &:hover {
+        color: $color-text;
+    }
+}
+
+.desktopOnly {
+    @media (max-width: $bp-mobile) {
+        display: none;
+    }
+}
+
+.mobileOnly {
+    display: none;
+
+    @media (max-width: $bp-mobile) {
+        display: flex;
+    }
+}
+
+.nav {
+    height: 2.5625rem;
+    box-shadow: 0 0.375rem 0.5rem -0.25rem rgba(0, 0, 0, 0.1);
+    border-top: 0.0625rem solid #f0f0f0;
+
+    ul {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: $color-muted;
+        white-space: nowrap;
+        position: relative;
+        transition: color 0.2s;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -0.25rem;
+            left: 0;
+            width: 0;
+            height: 0.125rem;
+            background: $color-purple;
+            transition: width 0.25s ease;
+        }
+
+        &:hover {
+            color: $color-purple;
+
+            &::after {
+                width: 100%;
+            }
+        }
+
+        @include focus-ring;
+    }
+
+    .highlight {
+        font-weight: 600;
+        color: $color-purple;
+    }
+
+    @media (max-width: $bp-tablet) {
+        overflow-x: auto;
+
+        ul {
+            justify-content: flex-start;
+            gap: 1.5rem;
+            padding-inline: 0.75rem;
+        }
+    }
+
+    @media (max-width: $bp-mobile) {
+        display: none;
+    }
+}
+
+/* ── Mobile drawer ────────────────────────────── */
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    @media (max-width: $bp-mobile) {
+        display: block;
+        pointer-events: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}
+
+.overlayOpen {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 201;
+    display: flex;
+    flex-direction: column;
+    width: min(20rem, 85vw);
+    height: 100dvh;
+    background: $color-white;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+
+    @media (min-width: calc(#{$bp-mobile} + 0.0625rem)) {
+        display: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}
+
+.drawerOpen {
+    transform: translateX(0);
+}
+
+.drawerHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.125rem 1.25rem;
+    border-bottom: 0.0625rem solid $color-line;
+}
+
+.drawerClose {
+    @include button-reset;
+    @include focus-ring;
+    display: flex;
+    padding: 0.375rem;
+    color: $color-muted;
+    border-radius: 0.375rem;
+    transition: color 0.2s, background 0.2s;
+
+    &:hover {
+        color: $color-text;
+        background: $color-surface;
+    }
+}
+
+.drawerNav {
+    flex: 1;
+    padding: 0.75rem 0;
+
+    a {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+        padding: 0.875rem 1.5rem;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: $color-text;
+        transition: background 0.15s, color 0.15s;
+
+        &:hover {
+            background: $color-surface;
+            color: $color-purple;
+        }
+    }
+
+    .highlight {
+        color: $color-purple;
+    }
+}
+
+.drawerActions {
+    border-top: 0.0625rem solid $color-line;
+    padding: 0.75rem 0 1.5rem;
+
+    button {
+        @include button-reset;
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+        width: 100%;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.875rem;
+        color: $color-text-soft;
+        transition: background 0.15s, color 0.15s;
+
+        &:hover {
+            background: $color-surface;
+            color: $color-purple;
+        }
+    }
+}

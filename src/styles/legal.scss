@@ -1,0 +1,242 @@
+@use 'vars' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: $font-family;
+  font-size: 16px;
+  line-height: 1.7;
+  color: $color-text;
+  background: $color-white;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+}
+
+a {
+  color: $color-blue;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-blue;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+code {
+  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, monospace;
+  font-size: 0.875em;
+  background: $color-surface;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.header {
+  background: $color-navy;
+  padding: 16px 24px;
+
+  a {
+    color: $color-yellow;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 18px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline-color: $color-yellow;
+    }
+  }
+}
+
+
+.container {
+  max-width: 780px;
+  margin-inline: auto;
+  padding: 48px 24px 80px;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: $color-navy;
+  margin: 0 0 8px;
+
+  @media (max-width: 600px) {
+    font-size: 26px;
+  }
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: $color-blue;
+  margin: 40px 0 12px;
+}
+
+p,
+li {
+  margin: 0 0 12px;
+}
+
+ul,
+ol {
+  padding-left: 24px;
+}
+
+.updated {
+  font-size: 13px;
+  color: $color-muted;
+  margin: 0 0 40px;
+  display: block;
+}
+
+.notice {
+  background: #fff8e1;
+  border-left: 4px solid $color-yellow;
+  padding: 16px 20px;
+  margin: 32px 0;
+  border-radius: 0 4px 4px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.highlight {
+  background: #e8f4fd;
+  border-left: 4px solid $color-blue;
+  padding: 16px 20px;
+  margin: 24px 0;
+  border-radius: 0 4px 4px 0;
+  line-height: 1.6;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+  overflow-x: auto;
+  display: block;
+
+  @media (min-width: 600px) {
+    display: table;
+  }
+}
+
+th {
+  background: $color-surface;
+  text-align: left;
+  padding: 10px 12px;
+  border: 1px solid #dedede;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+td {
+  padding: 10px 12px;
+  border: 1px solid #dedede;
+  vertical-align: top;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-required {
+  background: #e8f4fd;
+  color: $color-blue;
+}
+
+.badge-analytics {
+  background: #f0fdf4;
+  color: #166534;
+}
+
+.badge-marketing {
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.footer {
+  background: $color-surface;
+  padding: 20px 24px;
+  text-align: center;
+  font-size: 13px;
+  color: $color-text-soft;
+
+  a {
+    color: $color-blue;
+    margin: 0 8px;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-blue;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+}
+
+/* ── Páginas de erro (404 / 500) ──────────────── */
+
+.error-container {
+  text-align: center;
+  padding-block: 5rem;
+}
+
+.error-code {
+  font-size: 6rem;
+  font-weight: 700;
+  line-height: 1;
+  color: $color-blue;
+  margin: 0 0 1rem;
+}
+
+.error-btn {
+  display: inline-block;
+  background: $color-yellow;
+  color: $color-navy;
+  font-weight: 700;
+  padding: 0.875rem 2rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #ffd62e;
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-purple;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}

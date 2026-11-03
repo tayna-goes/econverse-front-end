@@ -1,0 +1,69 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+.nav {
+    padding: 2.4375rem 0 0;
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+    gap: 2.75rem;
+
+    @media (max-width: $bp-tablet) {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 0.5rem 1.5rem 1rem;
+        gap: 1.25rem;
+    }
+}
+
+.item {
+    @include button-reset;
+    @include focus-ring;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.3125rem;
+    width: 8rem;
+    color: $color-text;
+
+    &[aria-pressed='true'] {
+        .card {
+            background: $color-white;
+            color: #3c28bc;
+            box-shadow: 0 0.25rem 1.125rem rgba(52, 25, 178, 0.18);
+        }
+
+        .label {
+            font-weight: 600;
+            color: $color-purple;
+        }
+    }
+
+    &:hover .card {
+        transform: translateY(-0.25rem);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.14);
+    }
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8rem;
+    height: 8rem;
+    background: $color-surface;
+    border-radius: 0.5rem;
+    box-shadow: $shadow-soft;
+    color: #000;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.2s, color 0.2s;
+}
+
+.label {
+    font-size: 0.875rem;
+    line-height: 1.3125rem;
+    text-align: center;
+    white-space: nowrap;
+    color: $color-text-soft;
+}

@@ -1,0 +1,114 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+.banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 500;
+    background: $color-navy;
+    color: $color-white;
+    padding: 1.25rem;
+    box-shadow: 0 -0.25rem 1.25rem rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.3s ease-out;
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+    }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+}
+
+.inner {
+    max-width: $container + 2 * $gutter;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+
+    @media (max-width: $bp-mobile) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+.text {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: rgba($color-white, 0.85);
+
+    a {
+        @include focus-ring($color-yellow);
+        color: $color-yellow;
+        text-decoration: underline;
+
+        &:hover {
+            color: #ffd62e;
+        }
+    }
+}
+
+.actions {
+    display: flex;
+    gap: 0.625rem;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+
+    @media (max-width: $bp-mobile) {
+        width: 100%;
+    }
+}
+
+.accept {
+    @include btn($color-yellow, $color-navy, #ffd62e);
+    height: 2.5rem;
+    padding-inline: 1.25rem;
+    font-size: 0.875rem;
+
+    @media (max-width: $bp-mobile) {
+        flex: 1;
+    }
+}
+
+.reject {
+    @include button-reset;
+    @include focus-ring($color-yellow);
+    height: 2.5rem;
+    padding-inline: 1.25rem;
+    font-size: 0.875rem;
+    color: rgba($color-white, 0.75);
+    border: 0.0625rem solid rgba($color-white, 0.3);
+    border-radius: 0.25rem;
+    transition: color 0.2s, border-color 0.2s;
+
+    &:hover {
+        color: $color-white;
+        border-color: rgba($color-white, 0.6);
+    }
+
+    @media (max-width: $bp-mobile) {
+        flex: 1;
+    }
+}
+
+.prefs {
+    @include button-reset;
+    @include focus-ring($color-yellow);
+    font-size: 0.8125rem;
+    color: rgba($color-white, 0.55);
+    text-decoration: underline;
+    transition: color 0.2s;
+    white-space: nowrap;
+
+    &:hover {
+        color: rgba($color-white, 0.85);
+    }
+}
